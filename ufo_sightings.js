@@ -85,7 +85,7 @@ function runFilter(){
     var dropdownMenu = d3.select("#selColumn")
     var dataOption = dropdownMenu.property("value")
 
-    if (dataOption == 'datetime') {
+    if (dataOption == 'date') {
         console.log("button was clicked");
         
         // select input element and get raw html node
@@ -165,14 +165,13 @@ function runFilter(){
     }
     
     // DISPLAY INFORMATION ON TABLE:
-    
-    var tbody = d3.select("tbody");
-    
+    console.log(`here is the type of filteredData: ${typeof filteredData}`);
     // refresh table so that it returns to full dataset
     tbody.html("");
         
     // call ufoReports function on filtered data so that it prints just the filtered data
     filteredData.forEach(ufoReports);
+
 
 }
 
