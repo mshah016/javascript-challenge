@@ -49,35 +49,132 @@ button.on("click", runFilter);
 form.on("submit", runFilter);
 
 // define runFilter function
-function runFilter() {
+// function runFilter() {
 
-    // test
-    console.log("button was clicked");
+//     // test
+//     console.log("button was clicked");
 
-    // select input element and get raw html node
-    var input = d3.select("#datetime");
+//     // select input element and get raw html node
+//     var input = d3.select("#datetime");
     
-    // get input value
-    var inputValue = input.property("value");
+//     // get input value
+//     var inputValue = input.property("value");
 
-    // filter data so that date matches input value
-    var filteredData = tableData.filter(info => info.datetime === inputValue);
+//     // filter data so that date matches input value
+//     var filteredData = tableData.filter(info => info.datetime === inputValue);
 
-    // DISPLAY INFORMATION ON TABLE:
+//     // DISPLAY INFORMATION ON TABLE:
 
-    var tbody = d3.select("tbody");
+//     var tbody = d3.select("tbody");
 
-    // refresh table so that it returns to full dataset
-    tbody.html("");
+//     // refresh table so that it returns to full dataset
+//     tbody.html("");
     
-    // call ufoReports function on filtered data so that it prints just the filtered data
-    filteredData.forEach(ufoReports);
-}
+//     // call ufoReports function on filtered data so that it prints just the filtered data
+//     filteredData.forEach(ufoReports);
+// }
 
 
 // Level 2:
 
+d3.selectAll("#selColumn").on("change", runFilter)
 
+function runFilter(){
+    console.log("button was clicked");
+    
+    var dropdownMenu = d3.select("#selColumn")
+    var dataOption = dropdownMenu.property("value")
+
+    if (dataOption == 'datetime') {
+        console.log("button was clicked");
+        
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.datetime === inputValue);
+
+    } else if (dataOption == 'city') {
+
+        console.log("button was clicked");
+        d3.select("label").text("Enter a city")
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.city === inputValue);
+    
+    } else if (dataOption == 'state') {
+
+        console.log("button was clicked");
+        d3.select("label").text("Enter a state")
+
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.state === inputValue);
+        
+    } else if (dataOption == 'country') {
+
+        console.log("button was clicked");
+        d3.select("label").text("Enter a country")
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.country === inputValue);
+
+    } else if (dataOption == 'shape') {
+
+        console.log("button was clicked");
+        d3.select("label").text("Enter a shape")
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.shape === inputValue);
+
+    } else if (dataOption == 'durationMinutes') {
+
+        console.log("button was clicked");
+        d3.select("label").text("Enter a duration in minutes")
+        // select input element and get raw html node
+        var input = d3.select("#filter-input");
+        
+        // get input value
+        var inputValue = input.property("value");
+    
+        // filter data so that date matches input value
+        var filteredData = tableData.filter(info => info.durationMinutes === inputValue);
+    }
+    
+    // DISPLAY INFORMATION ON TABLE:
+    
+    var tbody = d3.select("tbody");
+    
+    // refresh table so that it returns to full dataset
+    tbody.html("");
+        
+    // call ufoReports function on filtered data so that it prints just the filtered data
+    filteredData.forEach(ufoReports);
+
+}
 
 
 
